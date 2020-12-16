@@ -16,12 +16,14 @@ let main = function() {
                 .find("span.get_achievement_btn")
                 .on("click", function() {
                     let element = $(this).parents(".css-1dbjc4n.r-1iusvr4.r-16y2uox.r-1777fci.r-1mi0q7o").find('.css-901oao.r-18jsvk2.r-1tl8opc.r-a023e6.r-16dba41.r-ad9z0x.r-bcqeeo.r-bnwqim.r-qvutc0');
-                    console.log(get_exp(element[0].innerText));
                     $(this).text(get_exp(element[0].innerText) + "exp獲得")
                         .off("click");
-                    setTimeout(function(that) {
-                        that.text("該当ワード" + get_exp_details(element[0].innerText));
-                    }($(this)), 1000);
+                    let text = "該当ワード" + get_exp_details(element[0].innerText);
+                    let that = $(this);
+                    setTimeout(function() {
+                        that.text(text)
+                    }, 1000);
+                    get_exp_remove(element[0].innerText);
                 })
         }
     });
@@ -29,15 +31,18 @@ let main = function() {
 setTimeout(main, 500);
 
 let achievement_list = [
-    [10, [".*"]]
+    [10, ["コロナ", "風邪"]],
+    [10, ["チー牛"]],
+    [10, ["\\(\\)"]]
 ];
 let get_exp = function(text) {
     let r = 0;
     $.each(achievement_list, function(index, column) {
         $.each(column[1], function(index, value) {
             if (text.match(new RegExp(value)) === null) return false;
-            if (column[1].length == index + 1) r += column[0];
+            if (column[1].length == index + 1) r = column[0];
         });
+        if (r > 0) return false;
     });
     return r;
 }
@@ -51,6 +56,17 @@ let get_exp_details = function(text) {
             if (text.match(new RegExp(value)) === null) return false;
             if (column[1].length == index + 1) r = d;
         });
+        if (r != "") return false;
     });
     return r;
+}
+let get_exp_remove = function(text) {
+    $.each(achievement_list, function(column_eq, column) {
+        let d = "";
+        $.each(column[1], function(index, value) {
+            d = d + "[" + value + "]";
+            if (text.match(new RegExp(value)) === null) return false;
+            if (column[1].length == index + 1) achievement_list.splice(column_eq, 1);
+        });
+    });
 }
