@@ -1,6 +1,6 @@
 {
-    "name": "ツイ廃ゲー",
-    "description": "ツイ廃向けゲーム",
+    "name": "クソツイコレクター",
+    "description": "クソツイゲットだぜ！",
     "version": "0.0.1",
     "manifest_version": 2,
     "browser_action": {
