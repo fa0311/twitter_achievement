@@ -22,7 +22,7 @@ let main = function() {
                     let that = $(this);
                     setTimeout(function() {
                         that.text(text)
-                    }, 1000);
+                    }, 2000);
                     get_exp_remove(element[0].innerText);
                 })
         }
