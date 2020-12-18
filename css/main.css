@@ -24,3 +24,11 @@
 #kusotui_menu_btn:hover svg {
     color: rgba(29, 161, 242, 1.00);
 }
+
+#kusotui_menu_btn[clicked=true] span {
+    color: rgba(29, 161, 242, 1.00);
+}
+
+#kusotui_menu_btn[clicked=true] svg {
+    color: rgba(29, 161, 242, 1.00);
+}

@@ -9,13 +9,22 @@
     let got_achievement_list = {};
 
     let loading = function() {
-        if ($("nav.css-1dbjc4n.r-1habvwh.r-eqz5dr").length === 0) {
-            setTimeout(loading, 500);
-        }
+        if ($("nav.css-1dbjc4n.r-1habvwh.r-eqz5dr").length === 0) setTimeout(loading, 500);
         $("nav.css-1dbjc4n.r-1habvwh.r-eqz5dr").children().eq(3).after('<div id="kusotui_menu_btn" aria-expanded="false" aria-haspopup="true" aria-label="クソツイコレクター" role="button" data-focusable="true" tabindex="0" class="css-18t94o4 css-1dbjc4n r-1habvwh r-6koalj r-eqz5dr r-16y2uox r-1ny4l3l r-1ag2gil r-13qz1uu" data-testid="AppTabBar_More_Menu"><div class="css-1dbjc4n r-1awozwy r-sdzlij r-18u37iz r-1777fci r-dnmrzs r-1sp51qo r-o7ynqc r-6416eg"><div class="css-1dbjc4n">' +
             '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-book"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>' +
             '</div><div dir="auto" class="css-901oao css-bfa6kz r-18jsvk2 r-1tl8opc r-1b6yd1w r-b88u0q r-ad9z0x r-1joea0r r-y3t9qe r-bcqeeo r-qvutc0"><span class="css-901oao css-16my406 r-1tl8opc r-ad9z0x r-bcqeeo r-qvutc0">クソツイコレクター</span></div></div></div>');
-
+        $("#kusotui_menu_btn").on("click", function() {
+            location.href = "https://twitter.com/kusotui/collector";
+        });
+        if (location.href == "https://twitter.com/kusotui/collector") {
+            $("#kusotui_menu_btn").attr("clicked", "true");
+            let clicked = function() {
+                setTimeout(clicked, 500);
+                if (location.href == "https://twitter.com/kusotui/collector") return;
+                $("#kusotui_menu_btn").attr("clicked", "false");
+            }
+            setTimeout(clicked, 500);
+        }
 
         setTimeout(main, 500);
     }
