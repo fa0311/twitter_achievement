@@ -32,3 +32,20 @@
 #kusotui_menu_btn[clicked=true] svg {
     color: rgba(29, 161, 242, 1.00);
 }
+
+
+/*達成状況*/
+
+.chart {
+    display: flex;
+    flex-direction: column;
+}
+
+.chart>.column {
+    display: flex;
+    justify-content: space-around;
+}
+
+.chart>.column>div {
+    width: 100%;
+}
