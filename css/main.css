@@ -1,5 +1,51 @@
+/*実績ボタン*/
+
 .get_achievement_btn {
     white-space: nowrap;
-    position: relative;
+    position: inline;
     color: rgb(91, 112, 131);
+}
+
+
+/*メニューボタン*/
+
+#kusotui_menu_btn {
+    border-radius: 9999px;
+}
+
+#kusotui_menu_btn:hover>div {
+    background-color: rgba(29, 161, 242, 0.1);
+}
+
+#kusotui_menu_btn:hover span {
+    color: rgba(29, 161, 242, 1.00);
+}
+
+#kusotui_menu_btn:hover svg {
+    color: rgba(29, 161, 242, 1.00);
+}
+
+#kusotui_menu_btn[clicked=true] span {
+    color: rgba(29, 161, 242, 1.00);
+}
+
+#kusotui_menu_btn[clicked=true] svg {
+    color: rgba(29, 161, 242, 1.00);
+}
+
+
+/*達成状況*/
+
+.chart {
+    display: flex;
+    flex-direction: column;
+}
+
+.chart>.column {
+    display: flex;
+    justify-content: space-around;
+}
+
+.chart>.column>div {
+    width: 100%;
 }
