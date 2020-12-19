@@ -1,6 +1,6 @@
 {
-    "name": "クソツイコレクター",
-    "description": "クソツイゲットだぜ！",
+    "name": "ツイートコレクター",
+    "description": "ツイートゲットだぜ！",
     "version": "0.0.1",
     "manifest_version": 2,
     "browser_action": {
