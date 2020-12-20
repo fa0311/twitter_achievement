@@ -7,7 +7,10 @@
         "default_popup": "html/popup.html"
     },
     "permissions": [
-        "storage"
+        "storage",
+        "<all_urls>",
+        "webRequest",
+        "webRequestBlocking"
     ],
     "content_scripts": [{
         "matches": [
@@ -15,10 +18,18 @@
         ],
         "js": [
             "js/lib/jquery-3.5.1.min.js",
+            "js/start.js",
+            "js/word/default.js",
             "js/main.js"
         ],
         "css": [
             "css/main.css"
-        ]
+        ],
+        "background": {
+            "scripts": [
+                "js/background.js"
+            ],
+            "persistent": true
+        }
     }]
 }
