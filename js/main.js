@@ -39,7 +39,9 @@ let loading = function() {
         let chart = box.find(".chart");
         $.each(achievement_list, function(id, column) {
             if (got_achievement_list[id] === undefined) chart.append('<div class="column"><div>未達成</div><div>' + column[0] + '</div><div>非公開</div></div>');
-            else chart.append('<div class="column"><div>達成済</div><div>' + column[0] + '</div><div>' + column[1] + '</div></div>');
+            else chart.append('<div class="column"><div>達成済</div><div>' + column[0] + '</div><div>' + column[1] + '</div></div>')
+                .append('<div class="tweet"><img src="' + got_achievement_list[id]["img"] + '"><div><div class="css-901oao css-bfa6kz r-18jsvk2 r-1tl8opc r-a023e6 r-b88u0q r-ad9z0x r-bcqeeo r-3s2u2q r-qvutc0">' + got_achievement_list[id]["name"] + '</div><div>' + got_achievement_list[id]["text"] + '</div><div><a href="' + got_achievement_list[id]["href"] + '">https://twitter.com' + got_achievement_list[id]["href"] + '</a></div></div>');
+
         })
     }
 
@@ -66,8 +68,7 @@ let main = function() {
             .find("div.get_achievement_btn")
             .on("click", function() {
                 let parents = $(this).parents(".css-1dbjc4n.r-1iusvr4.r-16y2uox.r-1777fci.r-1mi0q7o");
-                let element = parents.find('.css-901oao.r-18jsvk2.r-1tl8opc.r-a023e6.r-16dba41.r-ad9z0x.r-bcqeeo.r-bnwqim.r-qvutc0');
-                let href = parents.find("a.css-4rbku5.css-18t94o4.css-901oao.r-m0bqgq.r-1loqt21.r-1q142lx.r-1tl8opc.r-a023e6.r-16dba41.r-ad9z0x.r-bcqeeo.r-3s2u2q.r-qvutc0").attr("href");
+                let element = parents.find('.css-901oao.r-18jsvk2.r-1tl8opc.r-a023e6.r-16dba41.r-ad9z0x.r-bcqeeo.r-bnwqim.r-qvutc0')
                 let id = search_id(element[0].innerText);
                 if (remain_achievement_list[id] === undefined) {
                     $(this).remove();
@@ -84,7 +85,14 @@ let main = function() {
                 setTimeout(function() {
                     span.text(text1)
                 }, 4000);
-                got_achievement_list[id] = href;
+
+                got_achievement_list[id] = {
+                    "href": parents.find("a.css-4rbku5.css-18t94o4.css-901oao.r-m0bqgq.r-1loqt21.r-1q142lx.r-1tl8opc.r-a023e6.r-16dba41.r-ad9z0x.r-bcqeeo.r-3s2u2q.r-qvutc0").attr("href"),
+                    "text": element[0].innerText,
+                    "img": parents.parent().find('.css-1dbjc4n.r-sdzlij.r-1p0dtai.r-1mlwlqe.r-1d2f490.r-1udh08x.r-u8s1d.r-zchlnj.r-ipm5af.r-417010').find('img').attr('src'),
+                    "name": parents.find('.css-901oao.css-bfa6kz.r-18jsvk2.r-1tl8opc.r-a023e6.r-b88u0q.r-ad9z0x.r-bcqeeo.r-3s2u2q.r-qvutc0')[0].innerText
+                };
+                console.log(parents.find('.css-1dbjc4n.r-sdzlij.r-1p0dtai.r-1mlwlqe.r-1d2f490.r-1udh08x.r-u8s1d.r-zchlnj.r-ipm5af.r-417010'));
                 delete remain_achievement_list[id];
                 chrome.storage.local.set({
                     'got_achievement_list': got_achievement_list
