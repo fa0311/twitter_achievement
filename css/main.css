@@ -49,3 +49,18 @@
 .chart>.column>div {
     width: 100%;
 }
+
+
+/*ツイート*/
+
+.tweet {
+    margin: 0px 15px 20px 15px;
+    border-radius: 10px;
+    display: flex;
+}
+
+.tweet img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
