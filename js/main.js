@@ -81,10 +81,10 @@ let main = function() {
                 let text1 = "解除条件[" + remain_achievement_list[id][1] + "]";
                 setTimeout(function() {
                     span.text(text)
-                }, 2000);
+                }, 1500);
                 setTimeout(function() {
                     span.text(text1)
-                }, 4000);
+                }, 3000);
 
                 got_achievement_list[id] = {
                     "href": parents.find("a.css-4rbku5.css-18t94o4.css-901oao.r-m0bqgq.r-1loqt21.r-1q142lx.r-1tl8opc.r-a023e6.r-16dba41.r-ad9z0x.r-bcqeeo.r-3s2u2q.r-qvutc0").attr("href"),
@@ -92,7 +92,6 @@ let main = function() {
                     "img": parents.parent().find('.css-1dbjc4n.r-sdzlij.r-1p0dtai.r-1mlwlqe.r-1d2f490.r-1udh08x.r-u8s1d.r-zchlnj.r-ipm5af.r-417010').find('img').attr('src'),
                     "name": parents.find('.css-901oao.css-bfa6kz.r-18jsvk2.r-1tl8opc.r-a023e6.r-b88u0q.r-ad9z0x.r-bcqeeo.r-3s2u2q.r-qvutc0')[0].innerText
                 };
-                console.log(parents.find('.css-1dbjc4n.r-sdzlij.r-1p0dtai.r-1mlwlqe.r-1d2f490.r-1udh08x.r-u8s1d.r-zchlnj.r-ipm5af.r-417010'));
                 delete remain_achievement_list[id];
                 chrome.storage.local.set({
                     'got_achievement_list': got_achievement_list
