@@ -1,3 +1,4 @@
+# このプラグインは未完成です
 # twitter_achievement
 
 この Chrome 拡張機能は条件に一致した Twitter のツイートを捕まえてレベルを上げる単純なゲームです<br>
